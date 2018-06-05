@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>LIST USERS</title>
+    <title>CHECK PAYMENT HISTORY</title>
 
    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -32,9 +32,9 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li ><a href="adduser.html">Add User</a></li>
-            <li class="active"><a href="listusers.html">List Users</a></li>
+            <li><a href="listusers.html">List Users</a></li>
             <li ><a href="updatepayment.html">Update Payment</a></li>
-            <li ><a href="checkpaymenthistory.html">Check Payment History</a></li>
+            <li class="active"><a href="checkpaymenthistory.html">Check Payment History</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -43,21 +43,11 @@
 
 
      <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <center><h4><b>ALL USERS DETAILS</b></h4></center>  
-      </div>
-
-      <div class="row">
-        <center><p id="message"> </p></center>  
-      </div>
-
-
       <div class="row">
         
         <div class="input-group">
           <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-          <input id="search" type="text" class="form-control" name="search" placeholder="Search for any details" onkeyup="getusers()">
+          <input id="search" type="text" class="form-control" name="search" placeholder="Search for any details" onkeyup="getuser()">
         </div>
 
         <table class="table table-condensed table-bordered">
@@ -65,49 +55,29 @@
             <tr>
               <th>Account No.</th>
               <th>Name</th>
-              <th>Principle</th>
-              <th>No. of Days</th>
-              <th>Daily Amount</th>
-              <th>Interest Amount</th>
               <th></th>
             </tr>
           </thead>
           <tbody id="table_body">
             <tr>
-              <td>Krishna Saradhi</td>
-              <td>10000</td>
-              <td>90</td>
-              <td>300</td>
-              <td>2000</td>
-              <td>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
-                    more <span class="caret"></span></button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#">View</a></li>
-                      <li><a href="#">Edit</a></li>
-                      <li><a href="#">Delete</a></li>
-                    </ul>
-                  </div>
-              </td>
+              <td colspan="3"><center>Please Enter Search Value</center></td>
             </tr>
             
           </tbody>
         </table>
+    </div>
 
-
-
-
+    <div class="row">
+      <table class="table table-condensed table-bordered">
+        <thead>
+          <th>Date</th>
+          <th>Amount</th>
+        </thead>
+        <tbody id="hist_body">
         
-
-
-        
-
-
-      
-      </div>
-
-      
+        </tbody>
+      </table>
+    </div>
 
      
     </div> <!-- /container -->
@@ -119,6 +89,6 @@
     <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src="js/listusers.js"></script>
+<script src="js/checkpaymenthistory.js"></script>
   </body>
 </html>

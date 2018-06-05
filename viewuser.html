@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>ADD USER</title>
+    <title>VIEW USER</title>
 
    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -31,7 +31,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="adduser.html">Add User</a></li>
+            <li ><a href="adduser.html">Add User</a></li>
             <li><a href="listusers.html">List Users</a></li>
             <li ><a href="updatepayment.html">Update Payment</a></li>
             <li ><a href="checkpaymenthistory.html">Check Payment History</a></li>
@@ -45,7 +45,7 @@
      <div class="container">
       <!-- Example row of columns -->
       <div class="row">
-        <center><h4><b>ADD NEW USER</b></h4></center>  
+        <center><h4><b>DISPLAY USER INFORMATION</b></h4></center>  
       </div>
 
       <div class="row">
@@ -57,23 +57,23 @@
         <div class="col-md-4 well">
            <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" id="name"  disabled>
           </div>
 
             <div class="form-group">
             <label for="days">No. of Days:</label>
-            <input type="text" class="form-control" id="days">
+            <input type="text" class="form-control" id="days" disabled>
           </div>
 
            <div class="form-group">
             <label for="interest">Interest Amount:</label>
-            <input type="text" class="form-control" id="interest">
+            <input type="text" class="form-control" id="interest" disabled>
           </div>
 
 
            <div class="form-group">
             <label for="fine_days">No. of Days Late for Fine:</label>
-            <select class="form-control" id="fine_days">
+            <select class="form-control" id="fine_days" disabled>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -83,7 +83,7 @@
 
           <div class="form-group">
             <label for="address">Address:</label>
-            <textarea class="form-control" rows="4" id="address"></textarea>
+            <textarea class="form-control" rows="2" id="address" disabled></textarea>
           </div>
         
         </div>
@@ -96,34 +96,34 @@
 
           <div class="form-group">
             <label for="account">Account No.:</label>
-            <input type="text" class="form-control" id="account">
+            <input type="text" class="form-control" id="account" disabled>
           </div>
 
           <div class="form-group">
             <label for="princ_amount">Priniciple Amount:</label>
-            <input type="text" class="form-control" id="princ_amount">
+            <input type="text" class="form-control" id="princ_amount" disabled>
           </div>
 
           <div class="form-group">
             <label for="daily">Daily Amount to Pay:</label>
-            <input type="text" class="form-control" id="daily">
+            <input type="text" class="form-control" id="daily" disabled>
           </div>
 
           
 
           <div class="form-group">
             <label for="fine">Late Fine Amount Per Day:</label>
-            <input type="text" class="form-control" id="fine">
+            <input type="text" class="form-control" id="fine" disabled>
           </div>
 
           <div class="form-group">
             <label for="phone">Phone Number:</label>
-            <input type="text" class="form-control" id="phone">
+            <input type="text" class="form-control" id="phone" disabled>
           </div>
 
           <div class="form-group">
             <label for="aadhar">Aadhar Number:</label>
-            <input type="text" class="form-control" id="aadhar">
+            <input type="text" class="form-control" id="aadhar" disabled>
           </div>
 
        </div>
@@ -136,14 +136,11 @@
          
           <div class="form-group">
             <center><img src = "images/profile.jpg" style="width:40%;height:40%" id="pic"></center>
-            <hr>
-            <label for="upload">Profile Pic:</label>
-            <input type="file" class="form-control" id="upload">
           </div>
 
           <div class="form-group">
             <label for="extras">Any Extra Details:</label>
-            <textarea class="form-control" rows="4" id="extras" placeholder="Fill in any extra details like what is kept as debt like house documents or bike or auto or anything extra you can fill."></textarea>
+            <textarea class="form-control" rows="4" id="extras" disabled></textarea>
           </div>
 
            
@@ -152,7 +149,10 @@
         </div>
       </div>
 
-      <button class="btn btn-success btn-block" onclick="adduser()">SUBMIT</button>
+     <div class="btn-group btn-group-justified">
+        <a href="#" class="btn btn-primary">EDIT</a>
+        <a href="#" class="btn btn-danger">DELETE</a>
+      </div>
 
      
     </div> <!-- /container -->
@@ -164,6 +164,6 @@
     <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src="js/adduser.js"></script>
+<script src="js/viewuser.js"></script>
   </body>
 </html>

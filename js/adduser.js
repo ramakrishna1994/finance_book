@@ -19,6 +19,7 @@ $("#upload").change(function() {
 function checkfields()
 {
    var name = document.getElementById("name").value;
+   var account = document.getElementById("account").value;
   var days = document.getElementById("days").value;
   var fine_days = document.getElementById("fine_days").value;
   var address = document.getElementById("address").value;
@@ -33,6 +34,11 @@ function checkfields()
   if(name == "")
   {
      $('#message').html('<font color="red">Please Enter Name</font>');
+     return false;
+  }
+  if(account == "")
+  {
+     $('#message').html('<font color="red">Please Enter Account Number</font>');
      return false;
   }
   if(days == "")
@@ -100,6 +106,7 @@ function adduser()
   }
 
   var name = document.getElementById("name").value;
+  var account = document.getElementById("account").value;
   var days = document.getElementById("days").value;
   var fine_days = document.getElementById("fine_days").value;
   var address = document.getElementById("address").value;
@@ -113,6 +120,7 @@ function adduser()
    
   var formData = new FormData();
      formData.append("name", name);
+     formData.append("account", account);
      formData.append("days", days);
      formData.append("fine_days", fine_days);
      formData.append("address", address);
