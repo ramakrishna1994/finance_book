@@ -116,9 +116,10 @@ function updatepayment()
             processData: false,
             contentType: false,
             success: function (response) {
-                 alert('success');
-                 getdetails(document.getElementById("account").innerHTML);
-         
+                alert('Successfully Updated Payment');
+                getdetails(document.getElementById("account").innerHTML);
+                document.getElementById("actual_amount").value = "";
+                document.getElementById("today_date").value = "";
               
             }
         });
