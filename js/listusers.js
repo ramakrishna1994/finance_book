@@ -3,7 +3,7 @@ function getusers()
 	var search = document.getElementById("search").value;
 	var formData = new FormData();
     formData.append("search", search);
-    document.getElementById("table_body").innerHTML = '<center><img src="images/loader.gif" style="width:30%;height:30%"></center>0';
+    document.getElementById("table_body").innerHTML = '<tr><td colspan="7"><center><img src="images/loader.gif" style="width:3%;height:3%"></center></td></tr>';
     var innerhtml = '';
 
     $(document).ready(function(){
@@ -34,9 +34,8 @@ function getusers()
 						            +'        <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">'
 						            +'        more <span class="caret"></span></button>'
 						            +'        <ul class="dropdown-menu" role="menu">'
-						            +'          <li><a href="viewuser.html?account='+response[i].account+'&exact=1">View</a></li>'
-						            +'          <li><a href="#">Edit</a></li>'
-						            +'          <li><a href="#">Delete</a></li>'
+						            +'          <li><a href="viewuser.html?account='+response[i].account+'&exact=1"><font color="blue">View</font></a></li>'
+						            +'          <li><a href="#" onclick="deleteuser(\''+response[i].account+'\',\''+response[i].name+'\')"><font color="red">Delete</font></a></li>'
 						            +'        </ul>'
 						            +'      </div>'
 						            +'  </td>'
@@ -54,3 +53,35 @@ function getusers()
 
 
 getusers();
+var deleteid = "";
+$('#deleteModal').modal({ show: false});
+
+function deleteuser(account_no,name)
+{
+	$('#deleteModal').modal('show');
+	document.getElementById('deletebox').innerHTML = "<center>Are you sure want to delete the below User ? <br> Account Number : "+account_no
+												+"	<br>Name : 	"+name+"</center";
+	deleteid = account_no;
+}
+
+function confirmdelete()
+{
+	var formData = new FormData();
+    formData.append("id", deleteid);
+    document.getElementById("table_body").innerHTML = '<tr><td colspan="7"><center><img src="images/loader.gif" style="width:3%;height:3%"></center></td></tr>';
+
+    $(document).ready(function(){
+     $.ajax({
+            url: "phpFiles/deleteusertemp.php",// give your url
+            type: "POST",
+            data: formData,
+            dataType: 'json',
+            processData: false,
+            contentType: false,
+            success: function (response) {
+            		$('#deleteModal').modal('hide');
+                   	getusers();
+            }
+        });
+ 	});
+}

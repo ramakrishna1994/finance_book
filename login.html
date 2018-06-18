@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>CHECK PAYMENT HISTORY</title>
+    <title>LOGIN</title>
 
    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -34,7 +34,6 @@
             <li ><a href="adduser.html">Add User</a></li>
             <li><a href="listusers.html">List Users</a></li>
             <li ><a href="updatepayment.html">Update Payment</a></li>
-            <li class="active"><a href="checkpaymenthistory.html">Check Payment History</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -43,41 +42,36 @@
 
 
      <div class="container">
+     
       <div class="row">
+        <center><p id="message"> </p></center>  
+      </div>
+
+
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4 well">
         
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-          <input id="search" type="text" class="form-control" name="search" placeholder="Search for any details" onkeyup="getuser()">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input id="username" type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+            <br>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <br>
+            <button class="btn btn-success btn-block" onclick="login()">LOGIN</button>  
+          
+
+          
         </div>
 
-        <table class="table table-condensed table-bordered">
-          <thead>
-            <tr>
-              <th>Account No.</th>
-              <th>Name</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="table_body">
-            <tr>
-              <td colspan="3"><center>Please Enter Search Value</center></td>
-            </tr>
-            
-          </tbody>
-        </table>
-    </div>
 
-    <div class="row">
-      <table class="table table-condensed table-bordered">
-        <thead>
-          <th>Date</th>
-          <th>Amount</th>
-        </thead>
-        <tbody id="hist_body">
-        
-        </tbody>
-      </table>
-    </div>
+
+      </div>
+
+      
 
      
     </div> <!-- /container -->
@@ -89,6 +83,6 @@
     <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-<script src="js/checkpaymenthistory.js"></script>
+<script src="js/login.js"></script>
   </body>
 </html>

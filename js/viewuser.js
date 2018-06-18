@@ -29,20 +29,38 @@ function getuser(account,exact)
 					}
 					for(var i=0;i<response.length-1;i++)
 					{
-						document.getElementById("account").value = response[i].account;
-						document.getElementById("name").value = response[i].name;
-						document.getElementById("days").value = response[i].days;
-						document.getElementById("fine_days").value = response[i].fine_days;
-						document.getElementById("address").value = response[i].address;
-						document.getElementById("princ_amount").value = response[i].princ_amount;
-						document.getElementById("daily").value = response[i].daily;
-						document.getElementById("interest").value = response[i].interest;
-						document.getElementById("fine").value = response[i].fine;
-						document.getElementById("phone").value = response[i].phone;
-						document.getElementById("aadhar").value = response[i].aadhar;
-						document.getElementById("extras").value = response[i].extras;
+						document.getElementById("account").innerHTML = "<center>"+response[i].account+"</center>";
+						document.getElementById("name").innerHTML = "<center>"+response[i].name+"</center>";
+						document.getElementById("days").innerHTML = "<center>"+response[i].days+"</center>";
+						document.getElementById("start_date").innerHTML = "<center>"+response[i].start_date+"</center>";
+						document.getElementById("fine_days").innerHTML = "<center>"+response[i].fine_days+"</center>";
+						document.getElementById("address").innerHTML = "<center>"+response[i].address+"</center>";
+						document.getElementById("princ_amount").innerHTML = "<center>"+response[i].princ_amount+"</center>";
+						document.getElementById("daily").innerHTML = "<center>"+response[i].daily+"</center>";
+						document.getElementById("interest").innerHTML = "<center>"+response[i].interest+"</center>";
+						document.getElementById("fine_days").innerHTML = "<center>"+response[i].fine_days+"</center>";
+						document.getElementById("phone").innerHTML = "<center>"+response[i].phone+"</center>";
+						document.getElementById("aadhar").innerHTML = "<center>"+response[i].aadhar+"</center>";
+						document.getElementById("extras").innerHTML = "<center>"+response[i].extras+"</center>";
+
 					}
-					$('#message').html('');
+					var totalsum = 0;
+					if(response[0].pay_hist.length == 1)
+            		{
+            			document.getElementById("hist_body").innerHTML = '<tr><td colspan="2"><center>No Payment History</center</td></tr>';
+            		}
+            		else
+            		{
+            			for(var i=0;i < response[0].pay_hist.length-1;i++)
+	            		{
+	            			innerhtml += '<tr><td><center>'+response[0].pay_hist[i].date+'</center></td><td><center>'+response[0].pay_hist[i].amount+'</center></td></tr>'
+	            			totalsum += response[0].pay_hist[i].amount;
+	            		}	
+	            		document.getElementById("hist_body").innerHTML = innerhtml;
+            		}
+					
+            		document.getElementById("total_sum").innerHTML = "<center>"+totalsum+"</center>";
+            		$('#message').html('');
               
             }
         });

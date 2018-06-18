@@ -3,6 +3,7 @@ require_once 'connection.php';
 
 
 $name = mysqli_real_escape_string($con,$_POST['name']);
+$start_date = mysqli_real_escape_string($con,$_POST['start_date']);
 $account = mysqli_real_escape_string($con,$_POST['account']);
 $days = mysqli_real_escape_string($con,$_POST['days']);
 $fine_days = mysqli_real_escape_string($con,$_POST['fine_days']);
@@ -16,7 +17,7 @@ $aadhar = mysqli_real_escape_string($con,$_POST['aadhar']);
 $extras = mysqli_real_escape_string($con,$_POST['extras']);
 
 
-$insertQuery = "insert into users(account_no,name,days,fine_days,address,princ_amount,daily,interest,fine,phone,aadhar,extras) values('".$account."','".$name."',".$days.",".$fine_days.",'".$address."',".$princ_amount.",".$daily.",".$interest.",".$fine.",'".$phone."','".$aadhar."','".$extras."');";
+$insertQuery = "insert into users(account_no,start_date,name,days,fine_days,address,princ_amount,daily,interest,fine,phone,aadhar,extras) values('".$account."','".$start_date."','".$name."',".$days.",".$fine_days.",'".$address."',".$princ_amount.",".$daily.",".$interest.",".$fine.",'".$phone."','".$aadhar."','".$extras."');";
 
 
 

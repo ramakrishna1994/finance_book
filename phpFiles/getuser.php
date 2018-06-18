@@ -29,7 +29,7 @@ while($row = mysqli_fetch_array($result)){
 					$paidamount = explode(':', $paidArray[$i])[1]; 
 					$paidjson.= '{';
 					$paidjson.='"date":"'.$paiddate.'",';
-					$paidjson.='"amount":"'.$paidamount.'"';
+					$paidjson.='"amount":'.$paidamount.'';
 					$paidjson.='},';
 				}
 	}
@@ -44,6 +44,7 @@ while($row = mysqli_fetch_array($result)){
 	$json.='"account":'.$row['account_no'].',';
 	$json.='"name":"'.$row['name'].'",';
 	$json.='"days":'.$row['days'].',';
+	$json.='"start_date":"'.$row['start_date'].'",';
 	$json.='"fine_days":'.$row['fine_days'].',';
 	$json.='"address":"'.$row['address'].'",';
 	$json.='"princ_amount":'.$row['princ_amount'].',';

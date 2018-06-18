@@ -1,3 +1,22 @@
+function getDate()
+{
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+
+  var yyyy = today.getFullYear();
+  if(dd<10){
+      dd='0'+dd;
+  } 
+  if(mm<10){
+      mm='0'+mm;
+  } 
+  var today = dd+'-'+mm+'-'+yyyy;
+  document.getElementById("start_date").value = today;
+}
+
+getDate();
+
 function readURL(input) {
 
   if (input.files && input.files[0]) {
@@ -18,8 +37,9 @@ $("#upload").change(function() {
 
 function checkfields()
 {
-   var name = document.getElementById("name").value;
-   var account = document.getElementById("account").value;
+  var name = document.getElementById("name").value;
+  var start_date = document.getElementById("start_date").value;
+  var account = document.getElementById("account").value;
   var days = document.getElementById("days").value;
   var fine_days = document.getElementById("fine_days").value;
   var address = document.getElementById("address").value;
@@ -34,6 +54,11 @@ function checkfields()
   if(name == "")
   {
      $('#message').html('<font color="red">Please Enter Name</font>');
+     return false;
+  }
+  if(start_date == "")
+  {
+     $('#message').html('<font color="red">Please Enter Finance Start Date</font>');
      return false;
   }
   if(account == "")
@@ -106,6 +131,7 @@ function adduser()
   }
 
   var name = document.getElementById("name").value;
+  var start_date = document.getElementById("start_date").value;
   var account = document.getElementById("account").value;
   var days = document.getElementById("days").value;
   var fine_days = document.getElementById("fine_days").value;
@@ -120,6 +146,7 @@ function adduser()
    
   var formData = new FormData();
      formData.append("name", name);
+     formData.append("start_date", start_date);
      formData.append("account", account);
      formData.append("days", days);
      formData.append("fine_days", fine_days);
@@ -147,6 +174,10 @@ function adduser()
                   if(response.error == 0)
                     {
                       $('#message').html('<font color="green">Successfully Added New User Information</font>');
+                    }
+                    else
+                    {
+                      $('#message').html('<font color="red">Problem with Adding New User Information!! Please try again</font>'); 
                     }
               
             }
