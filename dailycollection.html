@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>UPDATE USER PAYMENT</title>
+    <title>DAILY COLLECTION</title>
 
    <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -36,10 +36,10 @@
           <ul class="nav navbar-nav">
             <li ><a href="adduser.html">Add User</a></li>
             <li><a href="listusers.html">List Users</a></li>
-            <li class="active"><a href="updatepayment.html">Update Payment</a></li>
-            <li ><a href="dailycollection.html">Daily Collection</a></li>
+            <li ><a href="updatepayment.html">Update Payment</a></li>
+            <li class="active"><a href="dailycollection.html">Daily Collection</a></li>
             <li ><a >Account Settings</a></li>
-            <li ><a href="" onclick="logout()">Logout</a></li>
+           <li ><a href="" onclick="logout()">Logout</a></li>
           </ul>
         </div><!--/.navbar-collapse -->
       </div>
@@ -48,75 +48,60 @@
 
 
      <div class="container">
+      <!-- Example row of columns -->
       <div class="row">
+        <center><h4><b>TOTAL DAILY COLLECTED AMOUNT</b></h4></center>  
+      </div>
+
+      <div class="row">
+        <center><p id="message"> </p></center>  
+      </div>
+
+
+      <div class="row">
+         
+        <table class="table table-bordered table-condensed">
+          <tr>
+            <td>
+              <input type="text" class="form-control" id="date" placeholder="Enter Date (e.g : 29-06-2018)">
+            </td>
+          </tr>
+          <tr>
+            <td >
+               <center>
+                <button type="submit" class="btn btn-sm btn-success btn-block" onclick="getDailyCollection()">GET DAILY COLLECTION</button>
+              </center>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center>
+                <center> <b>Total Collected Amount : </b><input type="text" id="totalsum" disabled></center>
+              </center>
+            </td>
+          </tr>
         
-        <div class="input-group">
-          <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-          <input id="search" type="text" class="form-control" name="search" placeholder="Search for any details" onkeyup="getuser()">
-        </div>
-
-        <table class="table table-condensed table-bordered">
-          <thead>
-            <tr>
-              <th>Account No.</th>
-              <th>Name</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="table_body">
-            <tr>
-              <td colspan="3"><center>Please Enter Search Value</center></td>
-            </tr>
-            
-          </tbody>
         </table>
-    </div>
+       
+      <div class="row">
+        <center><h4><b>Payment History</b></h4></center>  
+      </div>
 
-    <div class="row">
-      <table class="table table-condensed table-bordered">
-        <tr>
-          <td> Name </td>
-          <td id="name">--</td>
-        </tr>
-        <tr>
-          <td> Account Number </td>
-          <td id="account">--</td>
-        </tr>
-        <tr>
-          <td> Principle Amount </td>
-          <td id="princ_amount">--</td>
-        </tr>
-        <tr>
-          <td> Daily Amount to Pay </td>
-          <td id="daily">--</td>
-        </tr>
-        <tr>
-          <td> Last Payment Date </td>
-          <td id="last_date">--</td>
-        </tr>
-        <tr>
-          <td> Last Payment Made </td>
-          <td id="last_paid">--</td>
-        </tr>
-        <tr>
-          <td> Today Date </td>
-          <td ><input type="text" id="today_date"></td>
-        </tr>
-        <tr>
-          <td>Amount Paying Today</td>
-          <td ><input type="text" id="actual_amount"></td>
-        </tr>
-        <tr>
-          <td colspan="2"><center><button class="btn btn-success" onclick="updatepayment()">Update</button></center></td>
-        </tr>
-
+       <table class="table table-condensed table-bordered">
+        <thead>
+          <th><center>Account No.</center></th>
+          <th><center>Name</center></th>
+          <th><center>Amount</center></th>
+        </thead>
+        <tbody id="hist_body">
+        
+        </tbody>
       </table>
-    </div>
 
-     
     </div> <!-- /container -->
 
 
-<script src="js/updatepayment.js"></script>
+<script src="js/dailycollection.js"></script>
   </body>
 </html>

@@ -102,6 +102,16 @@ function getdetails(query)
 
 function updatepayment()
 {
+  if(document.getElementById("today_date").value == "")
+  {
+    alert("please Enter Today Date in DD-MM-YYYY format");
+    return;
+  }
+  if(document.getElementById("actual_amount").value == "")
+  {
+    alert("Please Enter Amount Paid");
+    return;
+  }
 	var formData = new FormData();
     formData.append("account", document.getElementById("account").innerHTML);
 	formData.append("date", document.getElementById("today_date").value);
