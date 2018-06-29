@@ -48,7 +48,7 @@ function getuser(account,exact)
 					var totalsum = 0;
 					if(response[0].pay_hist.length == 1)
             		{
-            			document.getElementById("hist_body").innerHTML = '<tr><td colspan="2"><center>No Payment History</center</td></tr>';
+            			//document.getElementById("hist_body").innerHTML = '<tr><td colspan="2"><center>No Payment History</center</td></tr>';
             		}
             		else
             		{
