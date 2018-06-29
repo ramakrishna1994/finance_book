@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>EDIT USER</title>
+
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!---Session Checking-->
+<script src="js/session.js"></script>
+<script src="js/logout.js"></script>   
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href=""><font color="red">Finance Book</font> </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="adduser.html">Add User</a></li>
+            <li><a href="listusers.html">List Users</a></li>
+            <li ><a href="updatepayment.html">Update Payment</a></li>
+            <li ><a >Account Settings</a></li>
+           <li ><a href="" onclick="logout()">Logout</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+    
+
+
+     <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <center><h4><b>EDIT USER INFORMATION</b></h4></center>  
+      </div>
+
+      <div class="row">
+        <center><p id="message"> </p></center>  
+      </div>
+
+
+      <div class="row">
+        <table class="table table-bordered table-condensed">
+          <tr>
+            <td>
+              <center><b>Account Number : </b>(Cannot Be Changed)</center>
+            </td>
+            <td id="account">
+             
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Name : </b></center>
+            </td>
+            <td >
+             <input type="text" id="name" >
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Principle Amount : </b></center>
+            </td>
+            <td >
+              <input type="text" id="princ_amount">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Start Date : </b></center>
+            </td>
+            <td >
+              <input type="text" id="start_date">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>No. of Days : </b></center>
+            </td>
+            <td >
+              <input type="text" id="days">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Interest Amount : </b></center>
+            </td>
+            <td >
+              <input type="text" id="interest">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Daily Amount To Pay : </b></center>
+            </td>
+            <td>
+              <input type="text" id="daily">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>No of Days for Late Fine : </b></center>
+            </td>
+            <td >
+              <input type="text" id="fine_days">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Late Fine Amount: </b></center>
+            </td>
+            <td >
+              <input type="text" id="fine">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Phone No. : </b></center>
+            </td>
+            <td >
+              <input type="text" id="phone">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Aadhar No. : </b></center>
+            </td>
+            <td >
+              <input type="text" id="aadhar">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Address : </b></center>
+            </td>
+            <td>
+              <textarea id="address" rows="3" cols="24"></textarea>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Any Extra Details : </b></center>
+            </td>
+            <td >
+               <textarea id="extras" rows="3" cols="24"></textarea>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <center><b>Total Amount Paid Till date : </b></center>
+            </td>
+            <td id="total_sum">
+              <center></center>
+            </td>
+          </tr>
+
+          <tr>
+            <td colspan="2">
+              <center><button class="btn btn-block btn-sm btn-success" onclick="updateuser()">UPDATE</button></center>
+            </td>
+          </tr>
+
+        </table>
+       
+       <!-----
+      <div class="row">
+        <center><h4><b>Payment History</b></h4></center>  
+      </div>
+
+       <table class="table table-condensed table-bordered">
+        <thead>
+          <th><center>Date</center></th>
+          <th><center>Amount</center></th>
+        </thead>
+        <tbody id="hist_body">
+        
+        </tbody>
+      </table>
+      ---->
+    </div> <!-- /container -->
+
+
+<script src="js/edituser.js"></script>
+  </body>
+</html>

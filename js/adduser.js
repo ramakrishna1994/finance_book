@@ -127,6 +127,7 @@ function adduser()
 
   if(checkfields() == false)
   {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
     return;
   }
 
@@ -174,10 +175,12 @@ function adduser()
                   if(response.error == 0)
                     {
                       $('#message').html('<font color="green">Successfully Added New User Information</font>');
+                      $('html, body').animate({ scrollTop: 0 }, 'fast');
                     }
                     else
                     {
                       $('#message').html('<font color="red">Problem with Adding New User Information!! Please try again</font>'); 
+                      $('html, body').animate({ scrollTop: 0 }, 'fast');
                     }
               
             }

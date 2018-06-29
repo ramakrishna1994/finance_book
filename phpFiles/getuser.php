@@ -50,6 +50,7 @@ while($row = mysqli_fetch_array($result)){
 	$json.='"princ_amount":'.$row['princ_amount'].',';
 	$json.='"daily":'.$row['daily'].',';
 	$json.='"interest":'.$row['interest'].',';
+	$json.='"fine":'.$row['fine'].',';
 	$json.='"phone":"'.$row['phone'].'",';
 	$json.='"extras":"'.$row['extras'].'",';
 	$json.='"aadhar":"'.$row['aadhar'].'",';

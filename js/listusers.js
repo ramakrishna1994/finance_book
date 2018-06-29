@@ -35,6 +35,7 @@ function getusers()
 						            +'        more <span class="caret"></span></button>'
 						            +'        <ul class="dropdown-menu" role="menu">'
 						            +'          <li><a href="viewuser.html?account='+response[i].account+'&exact=1"><font color="blue">View</font></a></li>'
+						            +'          <li><a href="edituser.html?account='+response[i].account+'&exact=1"><font color="maroon">Edit</font></a></li>'
 						            +'          <li><a href="#" onclick="deleteuser(\''+response[i].account+'\',\''+response[i].name+'\')"><font color="red">Delete</font></a></li>'
 						            +'        </ul>'
 						            +'      </div>'

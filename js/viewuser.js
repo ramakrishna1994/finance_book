@@ -25,6 +25,7 @@ function getuser(account,exact)
                    if(response[response.length-1].error == 1)
 					{
 							$('#message').html('<font color="red">Error in Fetching Details</font>');
+							$('html, body').animate({ scrollTop: 0 }, 'fast');
 							return;
 					}
 					for(var i=0;i<response.length-1;i++)
@@ -38,7 +39,7 @@ function getuser(account,exact)
 						document.getElementById("princ_amount").innerHTML = "<center>"+response[i].princ_amount+"</center>";
 						document.getElementById("daily").innerHTML = "<center>"+response[i].daily+"</center>";
 						document.getElementById("interest").innerHTML = "<center>"+response[i].interest+"</center>";
-						document.getElementById("fine_days").innerHTML = "<center>"+response[i].fine_days+"</center>";
+						document.getElementById("fine").innerHTML = "<center>"+response[i].fine+"</center>";
 						document.getElementById("phone").innerHTML = "<center>"+response[i].phone+"</center>";
 						document.getElementById("aadhar").innerHTML = "<center>"+response[i].aadhar+"</center>";
 						document.getElementById("extras").innerHTML = "<center>"+response[i].extras+"</center>";
