@@ -15,9 +15,10 @@ $fine = mysqli_real_escape_string($con,$_POST['fine']);
 $phone = mysqli_real_escape_string($con,$_POST['phone']);
 $aadhar = mysqli_real_escape_string($con,$_POST['aadhar']);
 $extras = mysqli_real_escape_string($con,$_POST['extras']);
+$pay_hist = mysqli_real_escape_string($con,$_POST['pay_hist']);
 
 
-$updateQuery = "update users set start_date='".$start_date."',name='".$name."',days=".$days.",fine_days=".$fine_days.",address='".$address."',princ_amount=".$princ_amount.",daily=".$daily.",interest=".$interest.",fine=".$fine.",phone='".$phone."',aadhar='".$aadhar."',extras= '".$extras."' where account_no='".$account."';";
+$updateQuery = "update users set start_date='".$start_date."',name='".$name."',days=".$days.",fine_days=".$fine_days.",address='".$address."',princ_amount=".$princ_amount.",daily=".$daily.",interest=".$interest.",fine=".$fine.",phone='".$phone."',aadhar='".$aadhar."',extras= '".$extras."',pay_hist= '".$pay_hist."' where account_no='".$account."';";
 
 
 

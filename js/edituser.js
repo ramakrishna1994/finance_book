@@ -3,7 +3,7 @@ var url_string = window.location.href
 var url = new URL(url_string);
 var account = url.searchParams.get("account");
 var exact = url.searchParams.get("exact");
-
+var amountcount = 0;
 
 function getuser(account,exact)
 {
@@ -48,16 +48,28 @@ function getuser(account,exact)
 					var totalsum = 0;
 					if(response[0].pay_hist.length == 1)
             		{
-            			//document.getElementById("hist_body").innerHTML = '<tr><td colspan="2"><center>No Payment History</center</td></tr>';
+            			document.getElementById("hist_body").innerHTML = '<tr><td colspan="3"><center>No Payment History</center</td></tr>';
             		}
             		else
             		{
             			for(var i=0;i < response[0].pay_hist.length-1;i++)
 	            		{
-	            			innerhtml += '<tr><td><center>'+response[0].pay_hist[i].date+'</center></td><td><center>'+response[0].pay_hist[i].amount+'</center></td></tr>'
+	            			innerhtml += '<tr><td><center>'
+                              +' <input type="text" id="date'+i+'" value="'+response[0].pay_hist[i].date+'">'
+                              +' </center></td>'
+                              +' <td><center>'
+                              +' <input type="text" id="amt'+i+'" value="'+response[0].pay_hist[i].amount+'">'
+                              +'</center></td>'
+                              +' <td><center>'
+                              +'  <button type="button" class="btn btn-default btn-sm" onclick="deleteFeild('+i+')">'
+                              +'     <span class="glyphicon glyphicon-trash"></span> Delete '
+                              +'   </button>'
+                              +'</center></td>'
+                              +'</tr>'
 	            			totalsum += response[0].pay_hist[i].amount;
+                    amountcount = amountcount + 1;
 	            		}	
-	            		//document.getElementById("hist_body").innerHTML = innerhtml;
+	            		document.getElementById("hist_body").innerHTML = innerhtml;
             		}
 					
             		document.getElementById("total_sum").innerHTML = totalsum;
@@ -89,12 +101,6 @@ function checkfields()
   var address = document.getElementById("address").value;
   var fine = document.getElementById("fine").value;
   var extras = document.getElementById("extras").value;
-  
-  
-  
-  
-  
-
   if(name == "")
   {
      $('#message').html('<font color="red">Please Enter Name</font>');
@@ -159,6 +165,47 @@ function checkfields()
 
 }
 
+function checkpaymentfeilds()
+{
+  for(var i=0;i<amountcount;i++)
+  {
+    if(document.getElementById("date"+i) && document.getElementById("date"+i).value == "")
+    {
+      $('#message').html('<font color="red">Please Make Sure all Payment Details are Updated and No Field is left Blank !!</font>');
+      return false;
+    }
+    if(document.getElementById("amt"+i) && document.getElementById("amt"+i).value == "")
+    {
+      $('#message').html('<font color="red">Please Make Sure all Payment Details are Updated and No Field is left Blank !!</font>');
+      return false;
+    }
+  }
+  return true;
+}
+
+
+function checkDuplicateDates()
+{
+    var datemap = {};
+    for(var i=0;i<amountcount;i++)
+    {
+      if(document.getElementById("date"+i)){
+          var dt = document.getElementById("date"+i).value;
+          if(dt in datemap){
+             $('#message').html('<font color="red">Duplicate Payment Dates Exist . Check for Focussed Feilds below!!</font>');
+             document.getElementById("date"+i).focus();
+             return false;
+          }  
+          else{
+            datemap[dt] = i;
+          }
+      }
+    }
+    return true;
+}
+
+
+
 
 function updateuser()
 {
@@ -170,6 +217,29 @@ function updateuser()
   	$('html, body').animate({ scrollTop: 0 }, 'fast');
     return;
   }
+  if(checkpaymentfeilds() == false)
+  {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
+    return;
+  }
+  if(checkDuplicateDates() == false)
+  {
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
+    return; 
+  }
+
+  var pay_hist = '';
+  for(var k=0;k<amountcount;k++)
+  {
+    if(document.getElementById("date"+k))
+    {
+        var dt = document.getElementById("date"+k).value;
+        var amt = document.getElementById("amt"+k).value;   
+        pay_hist += dt+':'+amt+',';
+    }
+  }
+  pay_hist = pay_hist.slice(0,pay_hist.length-1);
+  
 
   var name = document.getElementById("name").value;
   var start_date = document.getElementById("start_date").value;
@@ -198,6 +268,7 @@ function updateuser()
      formData.append("phone", phone);
      formData.append("aadhar", aadhar);
      formData.append("extras", extras);
+     formData.append("pay_hist", pay_hist);
      //formData.append( "pic", $( '#upload' )[0].files[0] );
    
    $(document).ready(function(){
@@ -226,4 +297,79 @@ function updateuser()
             }
         });
  });
+}
+
+
+function addNewFeild()
+{
+  var innerhtml = '';
+
+  for(var i=0;i<amountcount;i++)
+  {
+    if(document.getElementById("date"+i))
+    {
+        var date = document.getElementById("date"+i).value;
+        var amt = document.getElementById("amt"+i).value;
+        innerhtml += '<tr><td><center>'
+                  +' <input type="text" id="date'+i+'" value="'+date+'">'
+                  +' </center></td>'
+                  +' <td><center>'
+                  +' <input type="text" id="amt'+i+'" value="'+amt+'">'
+                  +'</center></td>'
+                  +' <td><center>'
+                  +'  <button type="button" class="btn btn-default btn-sm" onclick="deleteFeild('+i+')">'
+                  +'     <span class="glyphicon glyphicon-trash"></span> Delete '
+                  +'   </button>'
+                  +'</center></td>'
+                  +'</tr>'
+    }
+  }
+    
+
+  innerhtml += '<tr><td><center>'
+            +' <input type="text" id="date'+amountcount+'" >'
+            +' </center></td>'
+            +' <td><center>'
+            +' <input type="text" id="amt'+amountcount+'" >'
+            +'</center></td>'
+            +' <td><center>'
+            +'  <button type="button" class="btn btn-default btn-sm" onclick="deleteFeild('+amountcount+')">'
+            +'     <span class="glyphicon glyphicon-trash"></span> Delete '
+            +'   </button>'
+            +'</center></td>'
+            +'</tr>'
+  amountcount = amountcount + 1;
+  document.getElementById("hist_body").innerHTML = innerhtml;
+}
+
+
+function deleteFeild(id)
+{
+  var innerhtml = '';
+  for(var i=0;i<amountcount;i++)
+  {
+    if(id != i && document.getElementById("date"+i))
+    {
+        var date = document.getElementById("date"+i).value;
+        var amt = document.getElementById("amt"+i).value;
+        innerhtml += '<tr><td><center>'
+                  +' <input type="text" id="date'+i+'" value="'+date+'">'
+                  +' </center></td>'
+                  +' <td><center>'
+                  +' <input type="text" id="amt'+i+'" value="'+amt+'">'
+                  +'</center></td>'
+                  +' <td><center>'
+                  +'  <button type="button" class="btn btn-default btn-sm" onclick="deleteFeild('+i+')">'
+                  +'     <span class="glyphicon glyphicon-trash"></span> Delete '
+                  +'   </button>'
+                  +'</center></td>'
+                  +'</tr>'
+    }
+  }
+  if(innerhtml == ''){
+    document.getElementById("hist_body").innerHTML = '<tr><td colspan="3"><center>Deleted All Payment History</center</td></tr>';
+  }
+  else{
+    document.getElementById("hist_body").innerHTML = innerhtml;
+  }
 }
